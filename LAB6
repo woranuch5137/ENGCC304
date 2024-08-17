@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+int main() {
+int N = 0 ;
+int number1 = 1 ;
+int number2 = 100000 ;
+printf( "Please enter your number : " ) ;
+scanf( "%d", &N ) ;
+if( N % 2 == 1 ) {
+    for( int i = 0 ; i < 6 ; i++ ) {
+        printf( "%06d\n", number1 ) ;
+    number1 *= 10 ;
+    }
+}// end if
+else if( N % 2 == 0 ) {
+    for( int i = 0 ; i < 6 ; i++ ) {
+        printf( "%06d\n", number2 ) ;
+    number2 /= 10 ;
+    }
+}// end else if 
+    return 0 ;
+}// end function
