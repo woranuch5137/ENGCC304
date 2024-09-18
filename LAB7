@@ -1,0 +1,75 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main() {
+
+    int secret = 1 ; //เลขที่สุ่ม
+    int N = 0 ; //ใช้เก็บค่าที่รับเข้ามา
+    int I = 0 ; //ค่าที่รับเข้ามา(ไม่ให้เท่ากัน)
+    int num = 0 ; //1, -1
+
+    while ( I != secret ) {
+
+        int score = 100 ; //คะแนนผู้เล่น
+        int low = 1 ; //ค่าที่น้อยที่สุด
+        int hight = 100 ; //ค่าที่มากที่สุด
+        srand( time( 0 ) ) ; //เลขไม่ซ้ำ 
+        secret = rand() % 100 + 1 ; //สุ่มเลขปริศนา
+
+        printf( "Do you want to play game (1=play,-1=exit) : \n" ) ; //ต้องการเล่นเกมกด 1
+        scanf( "%d", &num ) ;
+        
+        printf( "%d\n  ", secret ) ;
+
+        if( num == 1) {
+            printf( "( score = 100 ) \n Guess the winning number ( 1-100 ) :\n " ) ;  //กรอกเพื่อทายตัวเลข 1-100
+        
+        } else {
+            exit(0) ;
+
+        }//end if
+
+        while ( N != secret ) { //ตัวเลขที่รับค่าเข้ามาไม่เท่ากับเลขปริศนาเข้าเงื่อนไข
+            scanf( "%d", &N ) ;
+
+            if( N == secret ) { //ตัวเลขที่รับค่าเข้ามาเท่ากับเลขปริศนา
+
+                printf( "That is correct! The winning number is %d\n", N ) ;
+                printf( "score = %d\n ", ( score -= 10 )  ) ;
+                printf( "Guess the winning number : %d\n", N  ) ;
+            
+            }
+            else if( N > secret ) { //ตัวเลขที่รับค่าเข้ามามากกว่าเลขปริศนา
+
+                printf( "Sorry, the winning number is HIGHER than is %d\n", N ) ;
+                printf( "score = %d\n ", ( score -= 10 ) ) ;
+                
+                if( N < hight ) {
+                    hight = N - 1 ;
+                }// end if
+                printf( "Guess the winning number ( %d-%d )\n", low, hight ) ;
+            
+            }
+            else { //ตัวเลขที่รับเข้ามาน้อยกว่าเลขปริศนา
+
+                printf( "Sorry, the winning number is LOWER than is %d\n", N ) ;
+                printf( "score = %d\n ", ( score -= 10 ) ) ;
+                
+                if( N > low ) {
+                    low = N + 1 ;                
+                } // end if
+                printf( "Guess the winning number ( %d-%d )\n", low, hight ) ;
+
+            } //end if
+
+        } //end while
+
+        printf( "You're the Winner!\n" ) ;
+
+    } //end while
+    
+
+    return 0 ;
+    
+}//end main function
