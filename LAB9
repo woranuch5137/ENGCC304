@@ -1,0 +1,52 @@
+#include <stdio.h>
+
+int main() {
+    
+    int Array[0] ; //จำนวนสมาชิก
+    int N = 0 ; //เก็บจำนวนสมาชิก
+    int i = 2 ; //ค่าที่รับเข้ามา
+    int j = 2 ; //เอาไว้หาตัวมาหาร
+    int prime_Number = 1 ; //จำนวนเฉพาะ
+
+    printf( "Enter N : " ) ;
+    scanf( "%d", &N ) ;
+
+
+   for ( i = 0 ; i < N ; i++ ) {
+        printf ("Enter value[%d] : ", i ) ; //เก็บค่าarrayที่ผู้ใช้ป้อน
+        scanf( "%d", &Array[i] ) ;
+    } //end for
+
+    printf( "Index : " ) ;
+    for( int i = 0 ; i < N ; i++ ) {
+        printf( "%3d " , i ) ;
+    } //end for
+
+    printf( "\nArray : " )  ; 
+    for( i = 0 ; i < N ; i++ ) {
+        prime_Number = 1 ; //สมมติเป็นจำนวนเฉพาะ
+
+        if( Array[ i ] < 2 ) {
+            prime_Number = 0 ;
+            
+        } else {
+            for( j = 2 ; j * j <= Array[ i ] ; j++ ) { //เริ่มจาก 2 และเพิ่มค่า  j ไปเรื่อยๆจนกว่า จะมีค่ามากกว่าตัวเลขที่กำลังตรวจสอบ Array[i]
+                if( Array[ i ] % j == 0 ) {
+                    prime_Number = 0 ;
+                    break ;
+                }//end if
+            }//end for
+        }//end if
+
+        if( prime_Number ) {
+            printf( "%3d ", Array[ i ] ) ; //แสดงจำนวนเฉพาะ
+        } else {
+            printf( "  # " ) ; //แสดงเครื่องหมายสี่เหลี่ยมที่ไม่ใช่จำนวนเฉพาะ
+        }//end if
+    }//end for
+
+       
+
+    return 0 ;
+
+} //end functiion
