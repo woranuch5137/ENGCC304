@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
+
+bool isPalindrome( char * str ) {
+    int l = 0 ;
+    int h = strlen(str) - 1 ;
+
+    while ( h > l ) {
+        if( str[ l++ ] != str[ h-- ] ) {
+            return false ;
+        } // end if
+    }// end while
+    return true ;
+}// end bool
+
+int main() {
+
+    char str[ 10 ] = " " ;
+
+    printf( "Enter word: " ) ;
+    scanf( "%s", str ) ;
+
+    if( isPalindrome(str) ) {
+        printf( "Not Pass.\n" ) ;
+    } else {
+        printf( "Pass.\n" ) ;
+    }// end if
+
+    return 0 ;
+}//end main function
