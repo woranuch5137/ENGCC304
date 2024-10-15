@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <math.h> 
+ 
+int main() { 
+    int num, originalNum, remainder, result = 0 ; 
+    int n = 0; 
+ 
+    // Input from the user 
+    printf( "Enter Number: " ) ; 
+    scanf( "%d", &num ) ; 
+ 
+    originalNum = num; 
+ 
+    // Calculate the number of digits 
+    while( originalNum != 0 ) { 
+        originalNum /= 10 ; 
+        n++ ; 
+    } // end while
+ 
+    originalNum = num ; 
+ 
+    // Calculate the sum of the nth powers of its digits 
+    while( originalNum != 0 ) { 
+        remainder = originalNum % 10 ; 
+        result += pow( remainder, n ) ; 
+        originalNum /= 10; 
+    } // end while
+ 
+    // Check if the number is an Armstrong number 
+    if ( result == num ) { 
+        printf( "Pass.", num ) ; 
+    } else { 
+        printf( "Not pass.", num ) ; 
+    } //end if
+ 
+    return 0 ;
+
+}//end main function
